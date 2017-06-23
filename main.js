@@ -6,14 +6,14 @@ function assignSpace(space, owner) {
   // create image tag
   const image = document.createElement('img');
   // image src depends what the owner value is which is the either X or O
-  // which is give to when its called in either computerChooseO or in the changetoX
+  // which is given to when its called in either computerChooseO or in the changetoX
   image.src = owner === 'x' ? X_IMAGE_URL : O_IMAGE_URL;
   // after the image src is given the space, which is a parameter, appends a child
   // to the space that is given, which is the current div, which is the img tag
   space.appendChild(image);
   // index is the current space trying to be taken up with is found by the attribute of data-index
   const index = parseInt(space.dataset.index);
-  // add a space in the takenBoxes array where the current index of the box is and a
+  // add a space in the takenBoxes object where the current index of the box is and a
   // X or a O
   takenBoxes[index] = owner;
   // find the index in freeBoxes array to remove the space that was just taken
@@ -87,7 +87,7 @@ function displayWinner() {
   resultContainer.appendChild(header);
 
   // Remove remaining event listeners left on the board if the game doesn't
-  // take up the whole board
+  // take up the whole board, ends the game
   for (const box of freeBoxes) {
     box.removeEventListener('click', changeToX);
   }
